@@ -1,6 +1,7 @@
 # Data files (large raw datasets)
 data/raw/*.xlsx
 data/raw/*.xls
+data/raw/*.xls
 
 # Environment
 .env
