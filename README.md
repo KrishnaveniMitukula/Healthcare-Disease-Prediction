@@ -23,6 +23,7 @@ healthcare-project/
 │   │   └── heart_disease_data.csv          # Original raw clinical dataset
 │   ├── cleaned_heart_disease_data.csv      # Unscaled dataset (for Power BI & EDA)
 │   └── scaled_heart_disease_data.csv       # Z-score standardized dataset (for ML models)
+|- visualizations                         
 ├── week1_data_preprocessing.ipynb          # Week 1: Data cleansing, imputation, & scaling
 ├── week1_data_preprocessing.py             # Python script conversion for preprocessing
 ├── week2_EDA.ipynb                         # Week 2: Bivariate & multivariate cohort analysis
