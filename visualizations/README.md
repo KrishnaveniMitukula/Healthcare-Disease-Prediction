@@ -7,7 +7,7 @@ This directory contains the graphical assets, plots, and charts generated during
 ## 📈 Featured Visuals
 
 ### 1. Model ROC Comparison (`model_roc_comparison.png`)
-* **Description:** Visualizes the True Positive Rate (Sensitivity/Recall) against the False Positive Rate (1 - Specificity) for both the baseline Logistic Regression and the optimized Random Forest models.
+* **Description:** Visualizes the True Positive Rate (Sensitivity/Recall) against the False Positive Rate (1 - Specificity) for both baseline Logistic Regression and the optimized Random Forest models.
 * **Clinical Insight:** Both models show excellent class separation capabilities:
   * **Logistic Regression AUC:** ~0.95
   * **Random Forest AUC:** ~0.94 - 0.96
