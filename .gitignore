@@ -24,7 +24,6 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
-
 # Sensitive files
 *.key
 *.pem
