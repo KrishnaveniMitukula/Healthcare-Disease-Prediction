@@ -2,6 +2,10 @@
 
 An end-to-end clinical machine learning and business intelligence dashboard pipeline for early heart disease detection, developed during the **Technical Internship Program in Data Analytics**.
 
+> [!IMPORTANT]
+> **Data Privacy & Security Compliance:** 
+> The patient datasets (`data/` folder) are excluded from this repository via `.gitignore` to comply with medical data privacy guidelines and HIPAA regulations. To run this project locally, please download the raw dataset from the [UCI Heart Disease Repository](https://archive.ics.uci.edu/dataset/45/heart+disease) and save it as `data/raw/heart_disease_data.csv` before running the notebooks.
+
 ---
 
 ## 📋 Executive Project Overview
@@ -15,21 +19,29 @@ This project addresses these bottlenecks by implementing:
 
 ---
 
+## 📓 Interactive Project Notebooks
+If GitHub's built-in notebook viewer fails to load the files, please click the links below to view them instantly on Jupyter nbviewer:
+* 📓 **Week 1:** [Data Cleansing & Preprocessing Notebook](https://nbviewer.org/github/KrishnaveniMitukula/Healthcare-Disease-Prediction/blob/main/week1_data_preprocessing.ipynb)
+* 📓 **Week 2:** [Exploratory Cohort Analysis (EDA) Notebook](https://nbviewer.org/github/KrishnaveniMitukula/Healthcare-Disease-Prediction/blob/main/week2_EDA.ipynb)
+* 📓 **Week 3:** [Predictive Machine Learning Notebook](https://nbviewer.org/github/KrishnaveniMitukula/Healthcare-Disease-Prediction/blob/main/Week3_Predictive_Modeling.ipynb)
+* 📓 **Week 4:** [Clinical Evaluation & Importances Notebook](https://nbviewer.org/github/KrishnaveniMitukula/Healthcare-Disease-Prediction/blob/main/week4_clinical_evaluation.ipynb)
+
+---
+
 ## 📂 Repository Structure
-```
+```text
 healthcare-project/
-|── data/
-│   ├── raw/
-│   │   └── heart_disease_data.csv          # Original raw clinical dataset
-│   ├── cleaned_heart_disease_data.csv      # Unscaled dataset (for Power BI & EDA)
-│   └── scaled_heart_disease_data.csv       # Z-score standardized dataset (for ML models)
-|- visualizations                         
-├── week1_data_preprocessing.ipynb          # Week 1: Data cleansing, imputation, & scaling
-├── week1_data_preprocessing.py             # Python script conversion for preprocessing
-├── week2_EDA.ipynb                         # Week 2: Bivariate & multivariate cohort analysis
-├── Week3_Predictive_Modeling.ipynb         # Week 3: Model training, splits, and evaluation
+├── visualizations/
+│   └── model_roc_comparison.png            # Model ROC curves plot
 ├── .gitignore                              # Git exclusion file
-└── README.md                               # Project documentation (this file)
+├── Dashboard.png                           # Power BI dashboard screenshot
+├── README.md                               # Project documentation (this file)
+├── Week3_Predictive_Modeling.ipynb         # Week 3 notebook
+├── healthcare_report.pbix                  # Final Power BI file
+├── requirements.txt                        # Python dependencies
+├── week1_data_preprocessing.ipynb          # Week 1 notebook
+├── week2_EDA.ipynb                         # Week 2 notebook
+└── week4_clinical_evaluation.ipynb         # Week 4 notebook
 ```
 
 ---
@@ -62,14 +74,13 @@ To reproduce this pipeline locally, you will need **Python 3.8+** installed.
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/KrishnaveniMitukula/healthcare-project.git
-   cd healthcare-project
+   git clone https://github.com/KrishnaveniMitukula/Healthcare-Disease-Prediction.git
+   cd Healthcare-Disease-Prediction
    ```
-
 
 2. **Install python dependencies:**
    ```bash
-   pip install pandas numpy scikit-learn matplotlib seaborn jupyter
+   pip install -r requirements.txt
    ```
 
 ---
@@ -80,11 +91,10 @@ To reproduce this pipeline locally, you will need **Python 3.8+** installed.
 * **Missing Value Imputation:** Handled missing data via **Median Imputation** (for continuous variables like cholesterol and blood pressure) to remain robust against clinical outliers, and **Mode Imputation** (for categorical features like thalassemia) to avoid biasing patient profiles.
 * **Ethics in Imputation:** Rather than unethically deleting records with missing data (which would reduce the cohort size and introduce demographic bias), we retained all records through strategic medical imputation.
 * **Feature Scaling:** Applied `StandardScaler` to continuous parameters to ensure standard Z-score ranges, preventing variables with high numerical ranges (e.g. cholesterol) from dominating machine learning training.
-* **Output:** Preprocessed datasets exported to `data/`.
 
 ### 📈 Week 2: Exploratory Data Analysis (EDA)
 * Plotted cohort demographic distributions (Age vs. resting blood pressure, cholesterol vs. target).
-* Produced a renamed correlation matrix heatmap to avoid multicollinearity.
+* Produced a correlation matrix heatmap to avoid multicollinearity.
 * Uncovered key clinical findings (e.g. asymptomatic chest pain patients paradoxically showed higher rates of heart disease than patients reporting typical chest pain).
 
 ### 🤖 Week 3: Predictive Modeling & Optimization
@@ -97,18 +107,22 @@ To reproduce this pipeline locally, you will need **Python 3.8+** installed.
 | Model | Accuracy | Recall (Heart Disease) | Precision (Heart Disease) | ROC-AUC |
 | :--- | :---: | :---: | :---: | :---: |
 | **Baseline Logistic Regression** | **87.0%** | **92.86%** | 81.0% | **0.9535** |
-| **Optimized Random Forest** | **85% - 89%** | **89% - 93%** | 82% - 86% | **0.94 - 0.96** |
+| **Optimized Random Forest** | **85.0% - 89.0%** | **89.0% - 93.0%** | 82.0% - 86.0% | **0.94 - 0.96** |
 
 * **Primary Clinical Metric Rationale:** We optimized models prioritizing **Recall (Sensitivity)** rather than Accuracy alone. In clinical prediction, failing to identify a sick patient (False Negative) has severe life-threatening consequences compared to a false alarm (False Positive), which is easily ruled out in follow-up screening.
 * **Model Visualization:** The ROC Curve comparison is saved to the visualizations directory:
   ![ROC Curve Comparison](visualizations/model_roc_comparison.png)
 
 ### 📊 Week 4: Clinical Analytics Dashboard
-* Designed a clinical intelligence interface in **Microsoft Power BI** using [cleaned_heart_disease_data.csv](file:///c:/Users/KRISH/Downloads/healthcare-project/data/cleaned_heart_disease_data.csv).
+* Designed a clinical intelligence interface in **Microsoft Power BI** using `cleaned_heart_disease_data.csv`.
 * Visual layout features:
   * Demographic risk slices by age group and gender.
   * KPI metrics for heart disease prevalence, average blood pressure, and cholesterol.
   * Biomarker scatter matrices tracking risk spaces.
+  * Bullet points summarizing clinical recommendations and machine learning feature importances.
+* Below is a screenshot of the completed interactive report:
+
+![Power BI Dashboard Preview](Dashboard.png)
 
 ---
 
