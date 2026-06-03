@@ -1,7 +1,5 @@
-# Data files (large raw datasets)
-data/raw/*.xlsx
-data/raw/*.xls
-data/raw/*.xls
+# Ignore all patient datasets (Security Protocol Compliance)
+data/
 
 # Environment
 .env
@@ -24,7 +22,8 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
 # Sensitive files
 *.key
 *.pem
-credentials.*
+credentials.*?
