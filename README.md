@@ -13,7 +13,7 @@ Healthcare systems globally generate massive amounts of patient data through Ele
 
 This project addresses these bottlenecks by implementing:
 1. **Ethical Preprocessing Pipeline:** Handled clinical data missingness, anomalies, and outliers without biasing the clinical cohort.
-2. **Exploratory Data Analysis (EDA):** Discovered demographic and biomarker correlations across healthy and diseased cohorts.
+2. **Exploratory Data Analysis (EDA):** Discovered demographic & biomarker correlations across healthy and diseased cohorts.
 3. **Machine Learning Classifiers:** Trained classification models (Logistic Regression & Random Forest) optimized to prioritize **Recall** (minimizing missed diagnoses / False Negatives).
 4. **Interactive Executive Dashboard:** Built a clinical-grade Power BI dashboard mapping diagnostic attributes to patient risk profiles for administrators & medical staff.
 
