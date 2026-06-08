@@ -90,7 +90,7 @@ To reproduce this pipeline locally, you will need **Python 3.8+** installed.
 ### 🏥 Week 1: Ethical Data Sourcing & Preprocessing
 * **Missing Value Imputation:** Handled missing data via **Median Imputation** (for continuous variables like cholesterol and blood pressure) to remain robust against clinical outliers, and **Mode Imputation** (for categorical features like thalassemia) to avoid biasing patient profiles.
 * **Ethics in Imputation:** Rather than unethically deleting records with missing data (which would reduce the cohort size and introduce demographic bias), we retained all records through strategic medical imputation.
-* **Feature Scaling:** Applied `StandardScaler` to continuous parameters to ensure standard Z-score ranges, preventing variables with high numerical ranges (e.g. cholesterol) from dominating machine learning training.
+* **Feature Scaling:** Applied `StandardScaler` to continuous parameters to ensure standard Z-score ranges, preventing variables with high numerical ranges (e.g. cholesterol) from dominating  the machine learning training.
 
 ### 📈 Week 2: Exploratory Data Analysis (EDA)
 * Plotted cohort demographic distributions (Age vs. resting blood pressure, cholesterol vs. target).
